@@ -230,11 +230,11 @@ export default function AvailabilityCalendar() {
                       <small>+45 12 34 56 78</small>
                     </span>
                   </a>
-                  <a href="mailto:booking@cphmusictouring.com" className="contact-btn email-btn">
+                  <a href="mailto:booking@cphtouring.com" className="contact-btn email-btn">
                     <span className="btn-icon">✉️</span>
                     <span className="btn-content">
                       <strong>Email Us</strong>
-                      <small>booking@cphmusictouring.com</small>
+                      <small>booking@cphtouring.com</small>
                     </span>
                   </a>
                 </div>
