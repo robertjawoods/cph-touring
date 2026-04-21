@@ -1,3 +1,7 @@
+---
+import Nav from "../components/Nav.astro"
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,18 +10,242 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>CPH Music Touring</title>
 	</head>
 	<body>
+		<Nav />
 		<slot />
+		<script>
+			// Theme management
+			function initTheme() {
+				console.log('Initializing theme...');
+				const savedTheme = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+				if (savedTheme) {
+					console.log('Using saved theme:', savedTheme);
+					document.documentElement.classList.toggle('dark-theme', savedTheme === 'dark');
+					document.documentElement.classList.toggle('light-theme', savedTheme === 'light');
+				} else if (prefersDark) {
+					console.log('Using system dark theme');
+					document.documentElement.classList.add('dark-theme');
+					document.documentElement.classList.remove('light-theme');
+				} else {
+					console.log('Using system light theme');
+					document.documentElement.classList.add('light-theme');
+					document.documentElement.classList.remove('dark-theme');
+				}
+			}
+
+			function toggleTheme() {
+				console.log('Toggling theme...');
+				const isDark = document.documentElement.classList.contains('dark-theme');
+				const newTheme = isDark ? 'light' : 'dark';
+				console.log('New theme:', newTheme);
+
+				document.documentElement.classList.toggle('dark-theme', newTheme === 'dark');
+				document.documentElement.classList.toggle('light-theme', newTheme === 'light');
+				localStorage.setItem('theme', newTheme);
+				
+				// Update theme toggle icon
+				updateThemeIcon();
+				
+				// Visual confirmation
+				document.body.style.backgroundColor = newTheme === 'dark' ? '#0a0a0a' : '#ffffff';
+			}
+
+			function updateThemeIcon() {
+				const themeToggle = document.getElementById('theme-toggle');
+				if (themeToggle) {
+					const themeIcon = themeToggle.querySelector('.theme-icon');
+					if (themeIcon) {
+						const isDark = document.documentElement.classList.contains('dark-theme');
+						themeIcon.textContent = isDark ? '☀️' : '🌙';
+						console.log('Updated icon to:', themeIcon.textContent);
+					}
+				}
+			}
+
+			// Initialize theme on load
+			document.addEventListener('DOMContentLoaded', () => {
+				console.log('DOMContentLoaded fired');
+				initTheme();
+				updateThemeIcon();
+				
+				// Watch for theme changes and update icon
+				const observer = new MutationObserver(() => {
+					console.log('Theme class changed');
+					updateThemeIcon();
+				});
+				observer.observe(document.documentElement, {
+					attributes: true,
+					attributeFilter: ['class']
+				});
+			});
+
+			// Listen for system theme changes
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+				console.log('System theme changed:', e.matches);
+				if (!localStorage.getItem('theme')) {
+					document.documentElement.classList.toggle('dark-theme', e.matches);
+					document.documentElement.classList.toggle('light-theme', !e.matches);
+					updateThemeIcon();
+				}
+			});
+
+			// Make functions available globally
+			window.toggleTheme = toggleTheme;
+			window.updateThemeIcon = updateThemeIcon;
+		</script>
 	</body>
 </html>
 
 <style>
+	/* Base styles - light theme */
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		font-family: 'Inter', sans-serif;
+		background-color: #ffffff;
+		color: #212529;
+		transition: background-color 0.3s ease, color 0.3s ease;
+	}
+
+	/* Dark theme overrides */
+	.dark-theme,
+	.dark-theme body {
+		background-color: #0a0a0a !important;
+		color: #ffffff !important;
+	}
+
+	/* Component specific dark theme styles */
+	.dark-theme .nav {
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 107, 107, 0.05) 100%) !important;
+		backdrop-filter: blur(20px) !important;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+	}
+
+	.dark-theme .theme-toggle {
+		background: rgba(255, 255, 255, 0.05) !important;
+		border: 1px solid rgba(255, 255, 255, 0.1) !important;
+		color: #ffffff !important;
+	}
+
+	.dark-theme .theme-toggle:hover {
+		background: rgba(255, 255, 255, 0.1) !important;
+	}
+
+	.dark-theme .links a {
+		color: rgba(255, 255, 255, 0.9) !important;
+	}
+
+	.dark-theme .links a:hover {
+		color: #ffffff !important;
+	}
+
+	.dark-theme .hero {
+		background: #0a0a0a !important;
+	}
+
+	.dark-theme h1 {
+		color: #ffffff !important;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+	}
+
+	.dark-theme p {
+		color: #cccccc !important;
+	}
+
+	.dark-theme .btn.secondary {
+		background: transparent !important;
+		color: #ffffff !important;
+		border: 2px solid #ffffff !important;
+	}
+
+	.dark-theme .btn.secondary:hover {
+		background: #ffffff !important;
+		color: #0a0a0a !important;
+	}
+
+	.dark-theme .about-page,
+	.dark-theme .booking-page {
+		background: #0a0a0a !important;
+	}
+
+	.dark-theme .about-page h1,
+	.dark-theme .booking-page h1 {
+		color: #ff6b6b !important;
+	}
+
+	.dark-theme .service-card {
+		background: rgba(255, 255, 255, 0.05) !important;
+		border: 1px solid rgba(255, 255, 255, 0.1) !important;
+	}
+
+	.dark-theme .calendar-container {
+		background: rgba(255, 255, 255, 0.05) !important;
+		border: 1px solid rgba(255, 255, 255, 0.1) !important;
+	}
+
+	.dark-theme .calendar-container h2 {
+		color: #ff6b6b !important;
+	}
+
+	.dark-theme .calendar-description {
+		color: #cccccc !important;
+	}
+
+	.dark-theme .custom-availability-calendar .react-calendar__tile {
+		background: rgba(255, 255, 255, 0.05) !important;
+		color: #ffffff !important;
+		border: 1px solid rgba(255, 255, 255, 0.1) !important;
+	}
+
+	.dark-theme .custom-availability-calendar .react-calendar__tile:hover {
+		background: rgba(255, 255, 255, 0.1) !important;
+	}
+
+	.dark-theme .custom-availability-calendar .react-calendar__navigation {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+	}
+
+	.dark-theme .custom-availability-calendar .react-calendar__navigation button {
+		color: #ffffff !important;
+	}
+
+	.dark-theme .custom-availability-calendar .react-calendar__month-view__weekdays {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+	}
+
+	.dark-theme .selected-date-info {
+		background: rgba(255, 107, 107, 0.1) !important;
+		border: 1px solid rgba(255, 107, 107, 0.3) !important;
+	}
+
+	.dark-theme .date-text {
+		color: #ffffff !important;
+	}
+
+	.dark-theme .availability-calendar {
+		background: transparent !important;
+		border: 1px solid #4a5568 !important;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+	}
+
+	.dark-theme .range-text {
+		color: #ffffff !important;
+	}
+
+	.dark-theme .contact-btn {
+		background: rgba(255, 255, 255, 0.08) !important;
+		border: 1px solid rgba(76, 175, 80, 0.3) !important;
+		color: #ffffff !important;
+	}
+
+	.dark-theme .contact-btn small {
+		color: #cccccc !important;
 	}
 </style>

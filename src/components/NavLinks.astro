@@ -1,0 +1,64 @@
+<div class="links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/booking">Booking</a>
+</div>
+
+<style>
+    .links {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .links a {
+        color: rgba(108, 117, 125, 0.9);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+        position: relative;
+        transition: all 0.3s ease;
+        padding: 0.5rem 0;
+    }
+
+    .links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+        transition: width 0.3s ease;
+    }
+
+    .links a:hover {
+        color: #212529;
+        transform: translateY(-2px);
+    }
+
+    .links a:hover::after {
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .links {
+            gap: 2rem;
+        }
+
+        .links a {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .links {
+            gap: 1.5rem;
+        }
+
+        .links a {
+            font-size: 0.9rem;
+        }
+    }
+</style>

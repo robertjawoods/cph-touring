@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BookingForm from "../components/BookingForm.astro";
+---
+
+<Layout>
+    <div class="booking-page">
+        <div class="container">
+            <h1>Book Your Tour</h1>
+            <div class="booking-content">
+                <BookingForm />
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .booking-page {
+        padding-top: 50px; /* Account for fixed nav */
+        min-height: 100vh;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+        color: var(--text-accent);
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .booking-content {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .booking-content {
+            /* Single column centered layout for mobile */
+        }
+    }
+</style>

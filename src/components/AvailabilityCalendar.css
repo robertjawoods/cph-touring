@@ -1,0 +1,483 @@
+/* Availability Calendar Styles */
+
+.availability-calendar {
+  width: 100%;
+  color: var(--text-primary);
+  background: transparent;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.calendar-container {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.calendar-container h2 {
+  font-size: 2rem;
+  color: var(--text-accent);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.calendar-description {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--text-secondary);
+}
+
+.loading p {
+  font-size: 1.1rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* React Calendar Custom Styles */
+.custom-availability-calendar {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.custom-availability-calendar .react-calendar__tile {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-radius: 5px;
+  padding: 0.75rem;
+  margin: 3px;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border-color);
+}
+
+.custom-availability-calendar .react-calendar__tile:hover {
+  background: var(--bg-secondary);
+  transform: translateY(-2px);
+}
+
+.custom-availability-calendar .react-calendar__tile.available-date {
+  background: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+  font-weight: 600;
+}
+
+.custom-availability-calendar .react-calendar__tile.available-date:hover {
+  background: #66BB6A;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.custom-availability-calendar .react-calendar__tile.selected-date {
+  outline: 3px solid var(--text-accent);
+  outline-offset: -1px;
+}
+
+.custom-availability-calendar .react-calendar__tile.unavailable-date {
+  background: #f44336;
+  color: white;
+  border: 1px solid #f44336;
+  font-weight: 600;
+}
+
+.custom-availability-calendar .react-calendar__tile.unavailable-date:hover {
+  background: #d32f2f;
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+.custom-availability-calendar .react-calendar__tile--now {
+  background: rgba(255, 107, 107, 0.2);
+  color: var(--text-accent);
+  border: 1px solid var(--text-accent);
+}
+
+.custom-availability-calendar .react-calendar__tile--active {
+  background: var(--text-accent);
+  color: white;
+  border: 1px solid var(--text-accent);
+}
+
+.custom-availability-calendar .react-calendar__month-view__days__day--weekend {
+  color: #ffb3b3;
+}
+
+.custom-availability-calendar .react-calendar__navigation {
+  background: transparent;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.custom-availability-calendar .react-calendar__navigation button {
+  background: transparent;
+  color: var(--text-primary);
+  border: none;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.custom-availability-calendar .react-calendar__navigation button:hover {
+  background: rgba(255, 107, 107, 0.2);
+}
+
+.custom-availability-calendar .react-calendar__month-view__weekdays {
+  background: transparent;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0.5rem;
+}
+
+.custom-availability-calendar .react-calendar__month-view__weekdays__weekday {
+  color: var(--text-accent);
+  font-weight: 700;
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+.custom-availability-calendar .react-calendar__month-view__days__day--neighboringMonth {
+  color: var(--text-secondary);
+}
+
+.selected-date-info {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+}
+
+.selected-dates-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.selected-dates-header h3 {
+  color: var(--text-accent);
+  margin: 0;
+  font-size: 1.1rem;
+  flex: 1;
+}
+
+.clear-selection-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  color: #ff9999;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.clear-selection-btn:hover {
+  background: rgba(255, 107, 107, 0.15);
+  border-color: var(--text-accent);
+  color: var(--text-accent);
+}
+
+.date-range-display {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  border-radius: 6px;
+}
+
+.range-text {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.selected-date-info h3 {
+  color: #ff6b6b;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.selected-dates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.selected-date-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.selected-date-item.available {
+  border-left: 3px solid #4CAF50;
+}
+
+.selected-date-item.unavailable {
+  border-left: 3px solid #f44336;
+  background: rgba(244, 67, 54, 0.05);
+}
+
+.date-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.date-text {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.status-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  width: fit-content;
+}
+
+.status-available {
+  color: #4CAF50;
+}
+
+.status-unavailable {
+  color: #f44336;
+}
+
+.remove-date-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.remove-date-btn:hover {
+  background: rgba(255, 107, 107, 0.2);
+  color: var(--text-accent);
+}
+
+.warning-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-radius: 6px;
+  color: #ffb3b3;
+  font-size: 0.95rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.booking-ready-message {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.05));
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.booking-ready-message h4 {
+  color: #4CAF50;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.booking-ready-message p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.booking-dates-summary {
+  font-size: 1.2rem !important;
+  color: #4CAF50 !important;
+  font-weight: 600 !important;
+  padding: 0.75rem;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 4px;
+}
+
+.contact-options {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-tertiary);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.contact-btn:hover {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: #4CAF50;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.contact-btn .btn-icon {
+  font-size: 1.8rem;
+  min-width: 50px;
+  text-align: center;
+}
+
+.contact-btn .btn-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex: 1;
+}
+
+.contact-btn strong {
+  color: #4CAF50;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+.contact-btn small {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .contact-options {
+    flex-direction: column;
+  }
+}
+
+.legend {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.legend-color.available {
+  background: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.legend-color.unavailable {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+.legend-color.selected-indicator {
+  background: var(--text-accent);
+  border: 2px solid var(--text-accent);
+  box-shadow: inset 0 0 0 2px var(--bg-primary);
+}
+
+.error-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(244, 67, 54, 0.15);
+  border: 1px solid rgba(244, 67, 54, 0.4);
+  border-radius: 6px;
+  color: #ff9999;
+  font-size: 0.95rem;
+  text-align: center;
+  line-height: 1.5;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar-container {
+    padding: 1.5rem;
+  }
+
+  .calendar-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .custom-availability-calendar {
+    max-width: 100%;
+  }
+
+  .legend {
+    gap: 1rem;
+  }
+}

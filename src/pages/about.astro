@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AboutIntro from "../components/AboutIntro.astro";
+import Services from "../components/Services.astro";
+import WhyChooseUs from "../components/WhyChooseUs.astro";
+---
+
+<Layout>
+    <div class="about-page">
+        <div class="container">
+            <h1>About CPH Music Touring</h1>
+            <div class="content">
+                <AboutIntro />
+                <Services />
+                <WhyChooseUs />
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .about-page {
+        padding-top: 80px; /* Account for fixed nav */
+        min-height: 100vh;
+        background: #ffffff;
+        color: #212529;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+        color: #ff6b6b;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .content {
+        color: #212529;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
